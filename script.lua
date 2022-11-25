@@ -41,7 +41,17 @@ TargetInfo = { -- We will store our targeting data here, in TargetInfo[UID].
         }
         self[T.Id].position.size = Options.AveragingTime
         self[T.Id].position:Push(T.Position)
-
+    end,
+    Remove = function(self, Id)
+        self[Id] = {}
+        for i = 0, self.size - 1 do
+            if self.list[i] == Id then
+                for j = 0, self.size - i - 2, 1 do
+                    self.list[i + j] = self.list[i + j + 1]
+                end
+            end
+        end
+        self.size = self.size - 1
     end
 }
 
