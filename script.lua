@@ -23,3 +23,21 @@ Buffer =
         B[I] = V
     end
 }
+-- Gonna put a fourier transform library here. I figure it will help with predicting sinusoidal movements.
+
+-- The almighty Update function!
+function Update(I)
+    --not gonna implement any of this until i know what i'm doing, but here's the gist of it.
+    --Get the current targets of our AI
+    --For each one, check if it is already in our target list.
+    --If yes, update it.
+    --If not, add it to the list.
+    --Check what weapons we have on the ship.
+    --Calculate the future positions of each target for each weapon's time to hit.
+    --Compare the predictions we made X frames ago to where the targets are now.
+    --Calculate the expected hit rate of each weapon for each enemy, given our simulated accuracy.
+    --Assign weapons to each target based on their characteristics and our expected accuracy.
+    --Aim the guns, fire the guns, fire the missiles, aim the missiles.
+    --Do prediction / interpolation or something on the targets that we have not seen this frame.
+    --Remove the targets that we have not seen for X frames.
+end
