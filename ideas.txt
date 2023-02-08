@@ -1,0 +1,10 @@
+Detected shells could be tracked and their path traced back to the point on the enemy ship where they where fired from. this would reveal weapon locations which we could then fire at.
+the amount of shells coming from each point and their diameter could be analyzed to rank enemy weapons by firepower.
+
+A fourier transform can probably best predict the movements of eratic targets.
+
+A polar or orbital coordinate system could help with predicting targets circling us.
+
+We can compare our previous aim point predictions for a weapon with the targets current position to check hit rate of each of our weapons with current settings vs said target, without even firing the weapons.
+This could be used not only to select the right weapons for a target, but also to tweak the settings and find the optimal configuration for the target.
+These accuracy values could be tracked over time to find the best timing to fire low firerate weapons.
