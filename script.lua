@@ -2,7 +2,7 @@
 Options = { -- Options here
     TrackingPeriod = 400, -- Amount of frames to keep data for.
     DiscardTimer = 80, -- Amount of frames a target has been missing for at which we forget it.
-    CoordinateMode = "World", -- What space to use for the coordinates of our target, one of "World", "Relative" or "Polar".
+    CoordinateMode = "World", -- What space to use for the coordinates of our target: "World", "Relative", "Polar" or "spherical".
     AveragingTime = "Auto" -- How far back into the past must we look, in order to determine the future? X frames or "Auto".
 }
 
@@ -52,6 +52,24 @@ TargetInfo = { -- We will store our targeting data here, in TargetInfo[UID].
             end
         end
         self.size = self.size - 1
+    end,
+    Compute = function(self, Id)
+        local Velocity = (self[Id].position:Get(0) - self[Id].position:Get(Options.TrackingPeriod - 1)) / (Options.TrackingPeriod / 40)
+        local CompensatedPath = {}
+        for i = 0, Options.TrackingPeriod - 1, 1 do
+            CompensatedPath[i] = self[Id].position:Get(Options.TrackingPeriod - i) - self[Id].position:Get(0) - Velocity * (Options.TrackingPeriod - i) / 40 -- remove stuff that gets in the way.
+            --maybe i should save it to the range -TrackingPeriod to 0, or maybe i can just reinterpret it as such later if its convenient lol.
+            --also this probably results in an error cuz vectors. fix it, future me!
+        end
+        self[Id].ComputeResults = {
+            Velocity = Velocity
+        }
+    end,
+    Predict = function(self, Id, T)
+        local result = {
+
+        }
+        return result
     end
 }
 
